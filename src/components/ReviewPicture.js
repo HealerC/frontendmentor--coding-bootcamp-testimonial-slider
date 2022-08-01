@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReviewPicture = ({ name, url }) => {
+const ReviewPicture = ({ name, url, prev, next }) => {
   return (
     <section className="card__picture">
       <img
@@ -20,7 +20,10 @@ const ReviewPicture = ({ name, url }) => {
         >
           <span className="sr-only">Picture of {name}</span>
         </div>
-        <section className="card__changeReviews">{"< >"}</section>
+        <section className="card__changeReviews">
+          <button onClick={prev}>prev</button>
+          <button onClick={next}>next</button>
+        </section>
       </div>
     </section>
   );

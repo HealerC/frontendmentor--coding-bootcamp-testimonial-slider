@@ -1,18 +1,35 @@
 import { useState } from "react";
 import "./stylesheets/App.css";
 import { ReviewText, ReviewPicture, ExtraActions } from "./components";
-import data from "./placeholder-data";
+import list from "./placeholder-data";
 
 function App() {
-  const [reviewList, setReviewList] = useState(data);
+  const [reviewData, setReviewData] = useState(list);
+  const [activeReview, setActiveReview] = useState(0);
+
+  const prevReview = () => {
+    if (activeReview === 0) return setActiveReview(reviewData.length - 1);
+    setActiveReview(activeReview - 1);
+  };
+  const nextReview = () => {
+    if (activeReview === reviewData.length - 1)
+      // last review
+      return setActiveReview(0);
+    setActiveReview(activeReview + 1);
+  };
   return (
     <main>
       <ReviewText
-        name={reviewList[1].name}
-        role={reviewList[1].role}
-        review={reviewList[1].review}
+        name={reviewData[activeReview].name}
+        role={reviewData[activeReview].role}
+        review={reviewData[activeReview].review}
       />
-      <ReviewPicture name={reviewList[1].name} url={reviewList[1].photoUrl} />
+      <ReviewPicture
+        name={reviewData[activeReview].name}
+        url={reviewData[activeReview].photoUrl}
+        prev={prevReview}
+        next={nextReview}
+      />
       <ExtraActions />
     </main>
   );
