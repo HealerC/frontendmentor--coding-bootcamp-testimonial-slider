@@ -12,11 +12,11 @@ const ReviewPicture = ({ name, url, prev, next }) => {
           }}
         >
           <span className="sr-only">Picture of {name}</span>
+          <section className="card__changeReviews">
+            <button onClick={prev}>prev</button>
+            <button onClick={next}>next</button>
+          </section>
         </div>
-        <section className="card__changeReviews">
-          <button onClick={prev}>prev</button>
-          <button onClick={next}>next</button>
-        </section>
       </div>
     </section>
   );

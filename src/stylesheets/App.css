@@ -53,6 +53,25 @@ body {
   background-size: contain;
   background-color: pink;
 }
+.card__photoContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__photoContainer .card__photoDiv {
+  width: 80%;
+  height: 80%;
+  background-size: cover;
+  position: relative;
+  border-radius: 0.2rem;
+}
+.card__photoContainer .card__changeReviews {
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+}
 
 .card__extraActions {
   position: absolute;
