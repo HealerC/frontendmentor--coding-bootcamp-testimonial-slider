@@ -51,6 +51,15 @@ body {
   &__text {
     flex-grow: 1;
     flex-basis: 50%;
+    margin-left: 2rem;
+    background-color: orange;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    .text-container {
+      position: relative;
+      left: 3rem;
+      z-index: 1;
+    }
   }
   &__picture {
     flex-grow: 1;
@@ -91,7 +100,7 @@ body {
 
 @media (min-width: 768px) {
   .card {
-    width: 50%;
+    width: 60%;
     // height: 50%; 
   }
 }

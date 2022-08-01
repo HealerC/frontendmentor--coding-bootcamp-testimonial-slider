@@ -44,6 +44,15 @@ body {
 .card__text {
   flex-grow: 1;
   flex-basis: 50%;
+  margin-left: 2rem;
+  background-color: orange;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.card__text .text-container {
+  position: relative;
+  left: 3rem;
+  z-index: 1;
 }
 .card__picture {
   flex-grow: 1;
@@ -81,7 +90,7 @@ body {
 
 @media (min-width: 768px) {
   .card {
-    width: 50%;
+    width: 60%;
   }
 }
 
