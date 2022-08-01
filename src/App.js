@@ -1,6 +1,7 @@
 import { useState } from "react";
-import data from "./placeholder-data";
+import "./stylesheets/App.css";
 import { ReviewText, ReviewPicture, ExtraActions } from "./components";
+import data from "./placeholder-data";
 
 function App() {
   const [reviewList, setReviewList] = useState(data);
