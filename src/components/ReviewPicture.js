@@ -1,13 +1,9 @@
-import React from "react";
+import patternBackground from "../images/pattern-bg.svg";
 
 const ReviewPicture = ({ name, url, prev, next }) => {
   return (
     <section className="card__picture">
-      <img
-        src="picture-backImage"
-        alt="Picture backimage"
-        className="card__backImage"
-      />
+      <img src={patternBackground} alt="" className="card__backgroundImage" />
       <div className="card__photoContainer">
         <div
           className="card__photoDiv"
