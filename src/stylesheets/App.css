@@ -19,15 +19,20 @@ body {
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
+  display: flex;
   background-color: rgb(235, 235, 137);
+}
+
+#root {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card {
-  width: 100%;
 }
 
 .card {
@@ -36,16 +41,28 @@ body {
   position: relative;
   display: flex;
 }
+.card__text {
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+.card__picture {
+  flex-grow: 1;
+  flex-basis: 50%;
+  background: url(../images/pattern-bg.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: pink;
+}
 
 .card__extraActions {
   position: absolute;
-  left: 0;
+  right: 0;
   bottom: 0;
 }
 
 @media (min-width: 768px) {
   .card {
-    width: 50vw;
+    width: 50%;
   }
 }
 
