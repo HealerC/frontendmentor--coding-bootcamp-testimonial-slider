@@ -1,5 +1,13 @@
+import { ReviewText, ReviewPicture, ExtraActions } from "./components";
+
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <main>
+      <ReviewText />
+      <ReviewPicture />
+      <ExtraActions />
+    </main>
+  );
 }
 
 export default App;
