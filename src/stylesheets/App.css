@@ -19,4 +19,34 @@ body {
   padding: 0;
 }
 
+body {
+  background-color: rgb(235, 235, 137);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 4px 6px hsla(0deg, 0%, 0%, 0.5);
+  position: relative;
+  display: flex;
+}
+
+.card__extraActions {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 50vw;
+  }
+}
+
 /*# sourceMappingURL=App.css.map */

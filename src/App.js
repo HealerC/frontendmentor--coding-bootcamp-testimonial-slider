@@ -18,7 +18,7 @@ function App() {
     setActiveReview(activeReview + 1);
   };
   return (
-    <main>
+    <main className="card">
       <ReviewText
         name={reviewData[activeReview].name}
         role={reviewData[activeReview].role}
