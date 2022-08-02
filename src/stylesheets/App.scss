@@ -25,7 +25,10 @@ html {
 body {
   height: 100%;   // So we can center the page
   display: flex;
-  background-color: rgb(235, 235, 137);
+  background-image: url("../images/glamorous.svg");
+  background-color: #f3f1f1;
+  // background-repeat: repeat-x;
+  // background-position: left bottom;
 }
 #root {
   display: flex;  // Turns out we have to tinker with root to center the page
