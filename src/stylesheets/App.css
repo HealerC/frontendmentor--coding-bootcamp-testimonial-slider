@@ -112,6 +112,8 @@ body {
   background-size: cover;
   border-radius: 0.2rem;
   position: relative;
+  background-color: hsl(248deg, 67%, 94%);
+  box-shadow: 3px 10px 10px hsla(0deg, 0%, 0%, 0.2);
 }
 .card__photoContainer .card__changeReviews {
   position: absolute;
@@ -122,6 +124,7 @@ body {
 }
 .card__changeReviews {
   display: flex;
+  border-radius: 1rem;
 }
 .card__changeReviews button {
   background-color: white;
@@ -193,7 +196,7 @@ body {
     width: 100%;
   }
   .card__photoContainer .card__changeReviews {
-    left: 30px;
+    left: 70px;
   }
 }
 @media (min-width: 800px) {

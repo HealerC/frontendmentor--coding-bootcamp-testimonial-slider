@@ -121,6 +121,8 @@ body {
       background-size: cover;
       border-radius: 0.2rem;
       position: relative;
+      background-color: hsl(248, 67%, 94%);
+      box-shadow: variables.$shadow-100;
     }
     .card__changeReviews {
       position: absolute;
@@ -133,6 +135,8 @@ body {
 
   &__changeReviews {
     display: flex;
+    // box-shadow: variables.$shadow-300;
+    border-radius: 1rem;
 
     button {
       background-color: white;
@@ -212,7 +216,7 @@ body {
       width: 100%;    //
       
       .card__changeReviews {
-        left: 30px;
+        left: 70px;
       }
     }
   }
