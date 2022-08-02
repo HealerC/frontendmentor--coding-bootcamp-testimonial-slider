@@ -20,56 +20,51 @@ body {
 }
 
 html {
-  height: 100%;
+  height: 100%;   // The html height initially expands with the content
 }
 body {
-  height: 100%;
+  height: 100%;   // So we can center the page
   display: flex;
   background-color: rgb(235, 235, 137);
 }
 #root {
-  display: flex;
+  display: flex;  // Turns out we have to tinker with root to center the page
   justify-content: center;
   align-items: center;
 }
-// .card {
-//   width: 100%;
-//   height: 100%;
-// }
-
 .card {
   background-color: white;
   box-shadow: 0 4px 6px hsla(0, 0%, 0%, .5);
-
-  position: relative;
+  position: relative;    // The special actions will be positioned absolutely
   display: flex;
-
-  // &__picture {
-  //   width: 90%;
-  // }
+  width: 100%;
+  height: 100vh;    // Fill the entire length of screen in smaller devices
+  flex-direction: column;
 
   &__text {
-    flex-grow: 1;
-    flex-basis: 50%;
+    order: 2;     /// The text comes under the picture in small devices
     padding-left: 2rem;
-    padding-top: 3rem;
+    padding-right: 2rem;
     padding-bottom: 4rem;
+    
     font-family: Roboto, san-serif;
     color: variables.$text-primary;
+    
     background-image: url(../images/pattern-curve.svg);
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 70%;
+    
     .text-container {
-      position: relative;
-      left: 4rem;
-      z-index: 1;
       padding-top: 1rem;
+      text-align: center;
+      // Big quote icon
       background-image: url(../images/pattern-quotes.svg);
       background-size: 4rem;
       background-repeat: no-repeat;
-      background-position: 20% 0;
+      background-position: 50% 0;
     }
+    // The testimonial text
     .card__testimonial {
       font-weight: 300;
       font-size: 1.3rem;
@@ -80,53 +75,70 @@ body {
         content: ' ' close-quote;
       }
     }
+    // Bio information
     .card__bio {
       font-weight: 500;
       font-size: 0.8rem;
       display: flex;
+      flex-direction: column;   // Stack vertically on smaller devices
+      .card__name {
+        margin-bottom: 0.2em;
+      }
       .card__role {
+        margin-top: 0;
         color: variables.$text-secondary;
-        margin-left: 0.5rem;
       }
     }
   }
   &__picture {
-    flex-grow: 1;
-    flex-basis: 50%;
+    order: 1; // Picture is on top of text on small devices
+    
     background: url(../images/pattern-bg.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-origin: content-box;
+    
     padding: 1rem;
-  }
-
-  &__photoContainer {
-    width: 100%;
-    height: 100%;
+    height: 60%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__photoContainer {
+    width: 90%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // The photo of the person covers up the div container
     .card__photoDiv {
       width: 80%;
       height: 80%;
       background-size: cover;
-      position: relative;
-
       border-radius: 0.2rem;
+      position: relative;
     }
     .card__changeReviews {
       position: absolute;
       bottom: -10px;
-      left: 30px;
+      left: 50%;
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);    // Centralize on smaller devices
     }
   }
 
   &__changeReviews {
     display: flex;
+
     button {
       background-color: white;
       border: none;
       padding: 0.5rem 0.8rem;
+
       &:first-child {
         border-top-left-radius: 1rem;
         border-bottom-left-radius: 1rem;
@@ -135,10 +147,11 @@ body {
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
       }
-      img {
+      img {     // next and prev svg icons
         width: 0.5rem;
         height: auto;
       }
+
       &:hover {
         background-color: whitesmoke;
       }
@@ -155,7 +168,69 @@ body {
   bottom: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
+  .card {
+    width: 85%;
+    height: revert;   // height is NOT 100% on bigger screens
+    flex-direction: row;  // revert the flex-direction
+
+    &__text {
+      order: 1;
+      // The text and photo should take up about 50% of the card each
+      flex-grow: 1;
+      flex-basis: 50%;
+      
+      padding-top: 3rem;
+      padding-right: 0;
+      .text-container {
+        position: relative;
+        left: 4rem;   // So the testimonial text overlaps the image
+        z-index: 1;
+        background-position: 20% 0;
+        text-align: initial;
+      }
+      .card__bio {
+        flex-direction: row;  // The card bio should stack horizontally
+        .card__name {
+          margin-bottom: initial;
+        }
+        .card__role {
+          margin-left: 0.5rem;
+          margin-top: revert;
+        }
+      }
+      
+    }
+
+    &__picture {
+      order: 2;   // Picture is the 2nd flex item on bigger screens
+      flex-grow: 1;
+      flex-basis: 50%;
+      height: initial;
+    }
+    &__photoContainer {
+      width: 100%;    //
+      
+      .card__changeReviews {
+        left: 30px;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .card {
+    width: 75%;
+    // height: 50%; 
+  }
+}
+@media (min-width: 1000px) {
+  .card {
+    width: 70%;
+    // height: 50%; 
+  }
+}
+@media (min-width: 1050px) {
   .card {
     width: 60%;
     // height: 50%; 
