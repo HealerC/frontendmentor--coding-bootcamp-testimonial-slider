@@ -51,11 +51,15 @@ body {
   &__text {
     flex-grow: 1;
     flex-basis: 50%;
-    margin-left: 2rem;
+    padding-left: 2rem;
     padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
     font-family: Roboto, san-serif;
     color: variables.$text-primary;
+    background-image: url(../images/pattern-curve.svg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 70%;
     .text-container {
       position: relative;
       left: 3rem;
