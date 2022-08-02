@@ -62,7 +62,7 @@ body {
     background-size: 70%;
     .text-container {
       position: relative;
-      left: 3rem;
+      left: 4rem;
       z-index: 1;
       padding-top: 1rem;
       background-image: url(../images/pattern-quotes.svg);
@@ -96,6 +96,8 @@ body {
     background: url(../images/pattern-bg.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    background-origin: content-box;
+    padding: 1rem;
   }
 
   &__photoContainer {
