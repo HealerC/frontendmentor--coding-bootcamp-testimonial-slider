@@ -1,4 +1,5 @@
-import patternBackground from "../images/pattern-bg.svg";
+import prevIcon from "../images/icon-prev.svg";
+import nextIcon from "../images/icon-next.svg";
 
 const ReviewPicture = ({ name, url, prev, next }) => {
   return (
@@ -13,8 +14,12 @@ const ReviewPicture = ({ name, url, prev, next }) => {
         >
           <span className="sr-only">Picture of {name}</span>
           <section className="card__changeReviews">
-            <button onClick={prev}>prev</button>
-            <button onClick={next}>next</button>
+            <button onClick={prev}>
+              <img src={prevIcon} alt="Previous review icon" />
+            </button>
+            <button onClick={next}>
+              <img src={nextIcon} alt="Next review icon" />
+            </button>
           </section>
         </div>
       </div>

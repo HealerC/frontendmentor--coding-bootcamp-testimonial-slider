@@ -89,7 +89,6 @@ body {
   background: url(../images/pattern-bg.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: pink;
 }
 .card__photoContainer {
   width: 100%;
@@ -109,6 +108,32 @@ body {
   position: absolute;
   bottom: -10px;
   left: 30px;
+}
+.card__changeReviews {
+  display: flex;
+}
+.card__changeReviews button {
+  background-color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+}
+.card__changeReviews button:first-child {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.card__changeReviews button:last-child {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.card__changeReviews button img {
+  width: 0.5rem;
+  height: auto;
+}
+.card__changeReviews button:hover {
+  background-color: whitesmoke;
+}
+.card__changeReviews button:active {
+  background-color: lightgray;
 }
 
 .card__extraActions {

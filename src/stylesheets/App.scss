@@ -96,7 +96,6 @@ body {
     background: url(../images/pattern-bg.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: pink;
   }
 
   &__photoContainer {
@@ -117,6 +116,33 @@ body {
       position: absolute;
       bottom: -10px;
       left: 30px;
+    }
+  }
+
+  &__changeReviews {
+    display: flex;
+    button {
+      background-color: white;
+      border: none;
+      padding: 0.5rem 0.8rem;
+      &:first-child {
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+      }
+      &:last-child {
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+      }
+      img {
+        width: 0.5rem;
+        height: auto;
+      }
+      &:hover {
+        background-color: whitesmoke;
+      }
+      &:active {
+        background-color: lightgray;
+      }
     }
   }
 
