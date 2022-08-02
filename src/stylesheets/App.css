@@ -45,14 +45,39 @@ body {
   flex-grow: 1;
   flex-basis: 50%;
   margin-left: 2rem;
-  background-color: orange;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-family: Roboto, san-serif;
+  color: hsl(245deg, 25%, 18%);
 }
 .card__text .text-container {
   position: relative;
   left: 3rem;
   z-index: 1;
+  padding-top: 1rem;
+  background-image: url(../images/pattern-quotes.svg);
+  background-size: 4rem;
+  background-repeat: no-repeat;
+  background-position: 20% 0;
+}
+.card__text .card__testimonial {
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+.card__text .card__testimonial::before {
+  content: open-quote " ";
+}
+.card__text .card__testimonial::after {
+  content: " " close-quote;
+}
+.card__text .card__bio {
+  font-weight: 500;
+  font-size: 0.8rem;
+  display: flex;
+}
+.card__text .card__bio .card__role {
+  color: hsl(245deg, 20%, 76%);
+  margin-left: 0.5rem;
 }
 .card__picture {
   flex-grow: 1;
