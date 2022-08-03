@@ -66,7 +66,12 @@ function App() {
   return (
     <main className="card">
       {!activeReview ? (
-        <h1>Nothing to show</h1>
+        <section className="card__noTestimonials">
+          <div className="noTestimonialContainer">
+            <h1>No testimonials here yet.</h1>
+            <p>Click anywhere to add ...</p>
+          </div>
+        </section>
       ) : (
         <>
           <ReviewText

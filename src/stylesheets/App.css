@@ -31,6 +31,7 @@ body {
 }
 
 #root {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +51,7 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: 4rem;
-  font-family: Roboto, san-serif;
+  font-family: Roboto, sans-serif;
   color: hsl(245deg, 25%, 18%);
   background-image: url(../images/pattern-curve.svg);
   background-repeat: no-repeat;
@@ -151,6 +152,27 @@ body {
   background-color: lightgray;
 }
 
+.card__noTestimonials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("../images/undraw_personal_opinions_re_qw29.svg");
+  background-size: 70% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: hsl(245deg, 25%, 18%);
+}
+.card__noTestimonials .noTestimonialContainer {
+  background-color: hsla(0deg, 0%, 100%, 0.3);
+  padding: 1rem;
+}
+
 .card__extraActions {
   position: absolute;
   right: 0;
@@ -198,6 +220,9 @@ body {
   }
   .card__photoContainer .card__changeReviews {
     left: 70px;
+  }
+  .card__noTestimonials {
+    height: 55vh;
   }
 }
 @media (min-width: 800px) {
