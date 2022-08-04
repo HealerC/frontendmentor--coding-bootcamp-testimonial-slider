@@ -107,7 +107,18 @@ function App() {
       };
     });
   };
-  const cancelEditing = () => {};
+  const cancelEditing = () => {
+    setReviewData((state) => ({
+      ...state,
+      edit: {
+        isEditing: false,
+        name: "",
+        role: "",
+        review: "",
+        photoUrl: "",
+      },
+    }));
+  };
 
   const activeReview = reviewData.list[reviewData.active];
   return (
@@ -144,6 +155,7 @@ function App() {
         edit={editReview}
         isEditing={reviewData.edit.isEditing}
         finishedEditing={finishedEditing}
+        cancelEditing={cancelEditing}
       />
     </main>
   );
