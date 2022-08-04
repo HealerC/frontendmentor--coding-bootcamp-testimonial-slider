@@ -25,7 +25,13 @@ function App() {
       document.removeEventListener("keydown", handleKeyPress);
     };
   });
-
+  useEffect(() => {
+    if (reviewData.edit.isEditing) {
+      document.removeEventListener("keydown", handleKeyPress);
+    } else {
+      document.addEventListener("keydown", handleKeyPress);
+    }
+  }, [reviewData.edit.isEditing]);
   const prevReview = () => {
     if (reviewData.active === 0)
       return setReviewData({
