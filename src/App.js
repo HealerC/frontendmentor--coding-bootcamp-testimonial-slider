@@ -84,8 +84,29 @@ function App() {
         edit: { isEditing: true, name, role, review, photoUrl },
       };
     });
-    console.log("Edit " + activeReview);
   };
+  const finishedEditing = () => {
+    setReviewData((state) => {
+      // const { name, role, review, photoUrl } = state.list[state.active];
+      const { name, role, review, photoUrl } = state.edit;
+      const newList = state.list.map((data, index) => {
+        if (index === state.active) return { name, role, review, photoUrl };
+        return data;
+      });
+      return {
+        ...state,
+        list: newList,
+        edit: {
+          isEditing: false,
+          name: "",
+          role: "",
+          review: "",
+          photoUrl: "",
+        },
+      };
+    });
+  };
+  const cancelEditing = () => {};
 
   const activeReview = reviewData.list[reviewData.active];
   return (
@@ -115,7 +136,13 @@ function App() {
         </>
       )}
 
-      <ExtraActions add={addReview} del={deleteReview} edit={editReview} />
+      <ExtraActions
+        add={addReview}
+        del={deleteReview}
+        edit={editReview}
+        isEditing={reviewData.edit.isEditing}
+        finishedEditing={finishedEditing}
+      />
     </main>
   );
 }
