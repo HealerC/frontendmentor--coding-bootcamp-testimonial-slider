@@ -26,6 +26,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
                 value={edit.name}
                 onChange={handleChange}
                 className="card__name card__name--edit"
+                maxLength="30"
               />
               <input
                 type="text"
@@ -33,6 +34,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
                 value={edit.role}
                 onChange={handleChange}
                 className="card__role card__role--edit"
+                maxLength="30"
               />
             </div>
           ) : (
