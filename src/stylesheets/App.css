@@ -69,12 +69,24 @@ body {
 .card__text .card__testimonial {
   font-weight: 300;
   font-size: 1.3rem;
+  font-family: Roboto, sans-serif;
 }
 .card__text .card__testimonial::before {
   content: open-quote " ";
 }
 .card__text .card__testimonial::after {
   content: " " close-quote;
+}
+.card__text .card__testimonial--edit {
+  background-color: transparent;
+  border: 1px solid #c2bff3;
+  margin-bottom: 1rem;
+  color: hsl(245deg, 25%, 18%);
+  max-width: 100%;
+}
+.card__text .card__testimonial--edit:focus {
+  outline: none;
+  border: 1px solid #9a94eb;
 }
 .card__text .card__bio {
   font-weight: 500;
@@ -88,6 +100,19 @@ body {
 .card__text .card__bio .card__role {
   margin-top: 0;
   color: hsl(245deg, 20%, 76%);
+}
+.card__text .card__bio .edit input {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #c2bff3;
+  background-color: transparent;
+  text-align: center;
+}
+.card__text .card__bio .edit input:focus {
+  outline: none;
+  border: 1px solid #9a94eb;
 }
 .card__picture {
   order: 1;
@@ -208,6 +233,14 @@ body {
   .card__text .card__bio .card__role {
     margin-left: 0.5rem;
     margin-top: revert;
+  }
+  .card__text .card__bio .edit {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card__text .card__bio .edit input {
+    text-align: revert;
   }
   .card__picture {
     order: 2;

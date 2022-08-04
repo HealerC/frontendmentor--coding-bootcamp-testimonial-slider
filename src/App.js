@@ -3,8 +3,20 @@ import "./stylesheets/App.css";
 import { ReviewText, ReviewPicture, ExtraActions } from "./components";
 import list from "./placeholder-data";
 
+const initialState = {
+  list,
+  active: 0,
+  edit: {
+    isEditing: false,
+    name: "",
+    role: "",
+    review: "",
+    photoUrl: "",
+  },
+};
+
 function App() {
-  const [reviewData, setReviewData] = useState({ list, active: 0 });
+  const [reviewData, setReviewData] = useState(initialState);
   // const [activeReview, setActiveReview] = useState(0);
 
   useEffect(() => {
@@ -59,6 +71,13 @@ function App() {
     console.log("Add review");
   };
   const editReview = () => {
+    setReviewData((state) => {
+      const { name, role, review, photoUrl } = state.list[state.active];
+      return {
+        ...state,
+        edit: { isEditing: true, name, role, review, photoUrl },
+      };
+    });
     console.log("Edit " + activeReview);
   };
 
@@ -78,12 +97,14 @@ function App() {
             name={activeReview.name}
             role={activeReview.role}
             review={activeReview.review}
+            edit={reviewData.edit}
           />
           <ReviewPicture
             name={activeReview.name}
             url={activeReview.photoUrl}
             prev={prevReview}
             next={nextReview}
+            edit={reviewData.edit}
           />
         </>
       )}

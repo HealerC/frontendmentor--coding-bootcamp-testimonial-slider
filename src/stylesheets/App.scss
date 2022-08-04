@@ -70,11 +70,23 @@ body {
     .card__testimonial {
       font-weight: 300;
       font-size: 1.3rem;
+      font-family: Roboto, sans-serif;
       &::before {
         content: open-quote ' ';
       }
       &::after {
         content: ' ' close-quote;
+      }
+      &--edit {
+        background-color: transparent;
+        border: 1px solid #c2bff3;;
+        margin-bottom: 1rem;
+        color: variables.$text-primary;
+        max-width: 100%;
+        &:focus {
+          outline: none;
+          border: 1px solid #9a94eb;
+        }
       }
     }
     // Bio information
@@ -89,6 +101,21 @@ body {
       .card__role {
         margin-top: 0;
         color: variables.$text-secondary;
+      }
+      .edit {
+        input {
+          font-family: Roboto, sans-serif;
+          font-weight: 500;
+          font-size: 0.8rem;
+          padding: 0.3rem 0.5rem;
+          border: 1px solid #c2bff3;
+          background-color: transparent;
+          text-align: center;
+          &:focus {
+            outline: none;
+            border: 1px solid #9a94eb;
+          }
+        }
       }
     }
   }
@@ -226,8 +253,18 @@ body {
           margin-left: 0.5rem;
           margin-top: revert;
         }
+        .edit {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          input {
+            text-align: revert;
+          }
+        }
       }
-      
+      .card__testimonial {
+
+      }
     }
 
     &__picture {
