@@ -25,13 +25,6 @@ function App() {
       document.removeEventListener("keydown", handleKeyPress);
     };
   });
-  useEffect(() => {
-    if (reviewData.edit.isEditing) {
-      document.removeEventListener("keydown", handleKeyPress);
-    } else {
-      document.addEventListener("keydown", handleKeyPress);
-    }
-  }, [reviewData.edit.isEditing]);
   const prevReview = () => {
     if (reviewData.active === 0)
       return setReviewData({
@@ -46,6 +39,7 @@ function App() {
     setReviewData({ ...reviewData, active: reviewData.active + 1 });
   };
   const handleKeyPress = (event) => {
+    if (reviewData.edit.isEditing) return;
     const key = event.key;
     switch (key) {
       case "ArrowLeft":
@@ -84,6 +78,13 @@ function App() {
         edit: { isEditing: true, name, role, review, photoUrl },
       };
     });
+  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setReviewData((state) => ({
+      ...state,
+      edit: { ...state.edit, [name]: value },
+    }));
   };
   const finishedEditing = () => {
     setReviewData((state) => {
@@ -125,6 +126,7 @@ function App() {
             role={activeReview.role}
             review={activeReview.review}
             edit={reviewData.edit}
+            handleChange={handleChange}
           />
           <ReviewPicture
             name={activeReview.name}

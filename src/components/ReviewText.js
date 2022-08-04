@@ -1,13 +1,15 @@
 import React from "react";
 
-const ReviewText = ({ name, role, review, edit }) => {
+const ReviewText = ({ name, role, review, edit, handleChange }) => {
   return (
     <article className="card__text">
       <div className="text-container">
         {edit.isEditing ? (
           <textarea
             className="card__testimonial card__testimonial--edit"
+            name="review"
             value={edit.review}
+            onChange={handleChange}
             cols="30"
             rows="6"
             maxlength="210"
@@ -20,12 +22,16 @@ const ReviewText = ({ name, role, review, edit }) => {
             <div className="edit">
               <input
                 type="text"
+                name="name"
                 value={edit.name}
+                onChange={handleChange}
                 className="card__name card__name--edit"
               />
               <input
                 type="text"
+                name="role"
                 value={edit.role}
+                onChange={handleChange}
                 className="card__role card__role--edit"
               />
             </div>
