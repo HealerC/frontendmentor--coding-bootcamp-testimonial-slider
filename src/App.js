@@ -64,7 +64,14 @@ function App() {
       if (newActive < 0) {
         newActive = newList.length - 1;
       }
-      return { list: newList, active: newActive };
+      const newEdit = {
+        isEditing: false,
+        name: "",
+        role: "",
+        review: "",
+        photoUrl: "",
+      };
+      return { ...state, list: newList, active: newActive, edit: newEdit };
     });
   };
   const addReview = () => {
