@@ -96,8 +96,17 @@ function App() {
   const finishedAdding = () => {
     setReviewData((state) => {
       const { name, role, review, photoUrl } = state.edit;
-      const newList = state.list.concat({ name, role, review, photoUrl });
-      const newActive = newList.length - 1;
+
+      /* Put the new review just after the active review.
+      Basically slice the array from beginning including the active review,
+      put the new one after it and then add up the remaining reviews  */
+      const dataBefore = state.list.slice(0, state.active + 1); // 0 -> active
+      const dataAfter = state.list.slice(state.active + 1); // active+1 -> end
+      const newData = { name, role, review, photoUrl };
+      const newList = [...dataBefore, newData, ...dataAfter];
+
+      const newActive = state.active + 1; // The new review is now the active one
+
       const newEdit = {
         isAdding: false,
         name: "",
