@@ -8,6 +8,7 @@ const initialState = {
   active: 0,
   edit: {
     isEditing: false,
+    isAdding: false,
     name: "",
     role: "",
     review: "",
@@ -39,7 +40,7 @@ function App() {
     setReviewData({ ...reviewData, active: reviewData.active + 1 });
   };
   const handleKeyPress = (event) => {
-    if (reviewData.edit.isEditing) return;
+    if (reviewData.edit.isEditing || reviewData.edit.isAdding) return;
     const key = event.key;
     switch (key) {
       case "ArrowLeft":
@@ -71,18 +72,66 @@ function App() {
         review: "",
         photoUrl: "",
       };
-      return { ...state, list: newList, active: newActive, edit: newEdit };
+      return {
+        ...state,
+        list: newList,
+        active: newActive,
+        edit: { ...state.edit, edit: newEdit },
+      };
     });
   };
   const addReview = () => {
-    console.log("Add review");
+    setReviewData((state) => ({
+      ...state,
+      edit: {
+        ...state.edit,
+        isAdding: true,
+        name: "",
+        role: "",
+        review: "",
+        photoUrl: "",
+      },
+    }));
+  };
+  const finishedAdding = () => {
+    setReviewData((state) => {
+      const { name, role, review, photoUrl } = state.edit;
+      const newList = state.list.concat({ name, role, review, photoUrl });
+      const newActive = newList.length - 1;
+      const newEdit = {
+        isAdding: false,
+        name: "",
+        role: "",
+        review: "",
+        photoUrl: "",
+      };
+      return {
+        ...state,
+        list: newList,
+        active: newActive,
+        edit: { ...state.edit, ...newEdit },
+      };
+    });
+  };
+  const cancelAdding = () => {
+    setReviewData((state) => ({
+      ...state,
+      edit: {
+        ...state.edit,
+        isAdding: false,
+        name: "",
+        role: "",
+        review: "",
+        photoUrl: "",
+      },
+    }));
   };
   const editReview = () => {
     setReviewData((state) => {
       const { name, role, review, photoUrl } = state.list[state.active];
       return {
         ...state,
-        edit: { isEditing: true, name, role, review, photoUrl },
+        edit: { ...state.edit, isEditing: true, name, role, review, photoUrl },
       };
     });
   };
@@ -105,6 +154,7 @@ function App() {
         ...state,
         list: newList,
         edit: {
+          ...state.edit,
           isEditing: false,
           name: "",
           role: "",
@@ -118,6 +168,7 @@ function App() {
     setReviewData((state) => ({
       ...state,
       edit: {
+        ...state.edit,
         isEditing: false,
         name: "",
         role: "",
@@ -163,6 +214,9 @@ function App() {
         isEditing={reviewData.edit.isEditing}
         finishedEditing={finishedEditing}
         cancelEditing={cancelEditing}
+        isAdding={reviewData.edit.isAdding}
+        finishedAdding={finishedAdding}
+        cancelAdding={cancelAdding}
       />
     </main>
   );

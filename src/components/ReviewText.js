@@ -4,7 +4,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
   return (
     <article className="card__text">
       <div className="text-container">
-        {edit.isEditing ? (
+        {edit.isEditing || edit.isAdding ? (
           <textarea
             className="card__testimonial card__testimonial--edit"
             name="review"
@@ -18,7 +18,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
           <h1 className="card__testimonial">{review || "Hello world"}</h1>
         )}
         <section className="card__bio">
-          {edit.isEditing ? (
+          {edit.isEditing || edit.isAdding ? (
             <div className="edit">
               <input
                 type="text"
