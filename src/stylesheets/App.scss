@@ -152,6 +152,37 @@ body {
       position: relative;
       background-color: hsl(248, 67%, 94%);
       box-shadow: variables.$shadow-100;
+      text-align: center;
+      font-family: Roboto, sans-serif;
+      font-weight: 300;
+      color: variables.$text-primary;
+      
+      .card__changePhoto {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        background-color: hsla(248, 67%, 94%, 0.5);
+        box-shadow: variables.$shadow-inset;
+        .changePhotoContainer {
+        }
+      }
+      &:hover .card__changePhoto {
+        color: #4A3FDB;
+      }
+      &:active .card__changePhoto {
+        color: #1f1881;
+      }
+      .icon-changePhoto {
+        font-size: xx-large;
+      }
+      p {
+        margin-top: 0.2em;
+        font-size: smaller;
+      }
     }
     .card__changeReviews {
       position: absolute;
@@ -194,6 +225,9 @@ body {
     }
   }
 
+  &__changePhoto {
+
+  }
 }
 .card {
   &__noTestimonials {
@@ -262,9 +296,9 @@ body {
           }
         }
       }
-      .card__testimonial {
+      // .card__testimonial {
 
-      }
+      // }
     }
 
     &__picture {

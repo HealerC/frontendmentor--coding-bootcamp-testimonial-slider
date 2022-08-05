@@ -21,8 +21,10 @@ const ReviewPicture = ({ name, url, prev, next, edit }) => {
         >
           {(edit.isEditing || edit.isAdding) && (
             <div className="card__changePhoto">
-              <FaImage className="icon-changePhoto" />
-              <p>Change photo</p>
+              <div className="changePhotoContainer">
+                <FaImage className="icon-changePhoto" />
+                <p>Change photo</p>
+              </div>
             </div>
           )}
           {!edit.isEditing && !edit.isAdding && (
