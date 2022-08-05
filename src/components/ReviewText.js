@@ -12,7 +12,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
             onChange={handleChange}
             cols="30"
             rows="6"
-            maxlength="210"
+            maxLength="210"
           />
         ) : (
           <h1 className="card__testimonial">{review || "Hello world"}</h1>
