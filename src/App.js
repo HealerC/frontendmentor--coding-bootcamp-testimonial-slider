@@ -5,9 +5,12 @@ import list from "./placeholder-data";
 import { addCdnLibrary } from "./utils";
 
 const CLOUDINARY_URL = "https://upload-widget.cloudinary.com/global/all.js";
+
+const lsList = localStorage.getItem("list");
+const lsActive = localStorage.getItem("active");
 const initialState = {
-  list,
-  active: 0,
+  list: lsList ? JSON.parse(lsList) : list,
+  active: lsActive ? parseInt(lsActive) : 0,
   edit: {
     isEditing: false,
     isAdding: false,
@@ -17,9 +20,16 @@ const initialState = {
     photoUrl: "",
   },
 };
+
 function App() {
   const [reviewData, setReviewData] = useState(initialState);
   // const [activeReview, setActiveReview] = useState(0);
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(reviewData.list));
+  }, [reviewData.list]);
+  useEffect(() => {
+    localStorage.setItem("active", reviewData.active);
+  }, [reviewData.active]);
   const [uploadWidget, setUploadWidget] = useState(null);
   const instantiateWidget = () => {
     const widget = window.cloudinary.createUploadWidget(
@@ -125,7 +135,12 @@ function App() {
     }));
   };
   const finishedAdding = () => {
-    if (!reviewData.edit.name || !reviewData.edit.role || !reviewData.edit.review || !reviewData.edit.photoUrl) {
+    if (
+      !reviewData.edit.name ||
+      !reviewData.edit.role ||
+      !reviewData.edit.review ||
+      !reviewData.edit.photoUrl
+    ) {
       return cancelAdding();
     }
     setReviewData((state) => {
@@ -187,7 +202,12 @@ function App() {
     }));
   };
   const finishedEditing = () => {
-    if (!reviewData.edit.name || !reviewData.edit.role || !reviewData.edit.review || !reviewData.edit.photoUrl) {
+    if (
+      !reviewData.edit.name ||
+      !reviewData.edit.role ||
+      !reviewData.edit.review ||
+      !reviewData.edit.photoUrl
+    ) {
       return cancelEditing();
     }
     setReviewData((state) => {

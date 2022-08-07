@@ -15,7 +15,12 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
             maxLength="210"
           />
         ) : (
-          <h1 className="card__testimonial">{review || "Hello world"}</h1>
+          <h1
+            className="card__testimonial"
+            dangerouslySetInnerHTML={{
+              __html: review.replaceAll("\n", "<br />") || "Hello world",
+            }}
+          ></h1>
         )}
         <section className="card__bio">
           {edit.isEditing || edit.isAdding ? (
