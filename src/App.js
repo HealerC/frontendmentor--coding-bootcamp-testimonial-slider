@@ -248,8 +248,8 @@ function App() {
   const activeReview = reviewData.list[reviewData.active];
   return (
     <main className="card">
-      {!activeReview ? (
-        <section className="card__noTestimonials">
+      {!activeReview && !reviewData.edit.isAdding ? (
+        <section className="card__noTestimonials" onClick={addReview}>
           <div className="noTestimonialContainer">
             <h1>No testimonials here yet.</h1>
             <p>Click anywhere to add ...</p>
@@ -258,15 +258,15 @@ function App() {
       ) : (
         <>
           <ReviewText
-            name={activeReview.name}
-            role={activeReview.role}
-            review={activeReview.review}
+            name={activeReview ? activeReview.name : ""}
+            role={activeReview ? activeReview.role : ""}
+            review={activeReview ? activeReview.review : ""}
             edit={reviewData.edit}
             handleChange={handleChange}
           />
           <ReviewPicture
-            name={activeReview.name}
-            url={activeReview.photoUrl}
+            name={activeReview ? activeReview.name : ""}
+            url={activeReview ? activeReview.photoUrl : ""}
             prev={prevReview}
             next={nextReview}
             edit={reviewData.edit}
