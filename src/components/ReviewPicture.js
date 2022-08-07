@@ -2,7 +2,7 @@ import prevIcon from "../images/icon-prev.svg";
 import nextIcon from "../images/icon-next.svg";
 import { FaImage } from "react-icons/fa";
 
-const ReviewPicture = ({ name, url, prev, next, edit }) => {
+const ReviewPicture = ({ name, url, prev, next, edit, uploadPhoto }) => {
   return (
     <section className="card__picture">
       {/* <img src={patternBackground} alt="" className="card__backgroundImage" /> */}
@@ -20,7 +20,7 @@ const ReviewPicture = ({ name, url, prev, next, edit }) => {
           }
         >
           {(edit.isEditing || edit.isAdding) && (
-            <div className="card__changePhoto">
+            <div className="card__changePhoto" onClick={uploadPhoto}>
               <div className="changePhotoContainer">
                 <FaImage className="icon-changePhoto" />
                 <p>Change photo</p>

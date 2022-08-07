@@ -24,3 +24,6 @@ yarn-error.log*
 
 # scss map file
 /src/stylesheets/App.css.map
+
+# env variable
+.env

@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import "./stylesheets/App.css";
 import { ReviewText, ReviewPicture, ExtraActions } from "./components";
 import list from "./placeholder-data";
+import { addCdnLibrary } from "./utils";
 
+const CLOUDINARY_URL = "https://upload-widget.cloudinary.com/global/all.js";
 const initialState = {
   list,
   active: 0,
@@ -15,11 +17,39 @@ const initialState = {
     photoUrl: "",
   },
 };
-
 function App() {
   const [reviewData, setReviewData] = useState(initialState);
   // const [activeReview, setActiveReview] = useState(0);
+  const [uploadWidget, setUploadWidget] = useState(null);
+  const instantiateWidget = () => {
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+        uploadPreset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+        multiple: false,
+        cropping: true,
+        resourceType: "image",
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          const newPhotoUrl = result.info.secure_url;
+          setReviewData((state) => ({
+            ...state,
+            edit: { ...state.edit, photoUrl: newPhotoUrl },
+          }));
+        }
+        console.log(error);
+      }
+    );
+    setUploadWidget(widget);
+  };
 
+  const uploadPhoto = () => {
+    if (uploadWidget) uploadWidget.open();
+  };
+  useEffect(() => {
+    addCdnLibrary(CLOUDINARY_URL, instantiateWidget);
+  }, []);
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
     return () => {
@@ -212,6 +242,7 @@ function App() {
             prev={prevReview}
             next={nextReview}
             edit={reviewData.edit}
+            uploadPhoto={uploadPhoto}
           />
         </>
       )}
