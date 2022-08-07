@@ -185,7 +185,7 @@ function App() {
     }));
   };
   const editReview = () => {
-    if (reviewData.edit.isAdding) return;
+    if (reviewData.edit.isAdding || reviewData.list.length === 0) return;
     setReviewData((state) => {
       const { name, role, review, photoUrl } = state.list[state.active];
       return {
