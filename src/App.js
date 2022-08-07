@@ -125,6 +125,9 @@ function App() {
     }));
   };
   const finishedAdding = () => {
+    if (!reviewData.edit.name || !reviewData.edit.role || !reviewData.edit.review || !reviewData.edit.photoUrl) {
+      return cancelAdding();
+    }
     setReviewData((state) => {
       const { name, role, review, photoUrl } = state.edit;
 
@@ -184,6 +187,9 @@ function App() {
     }));
   };
   const finishedEditing = () => {
+    if (!reviewData.edit.name || !reviewData.edit.role || !reviewData.edit.review || !reviewData.edit.photoUrl) {
+      return cancelEditing();
+    }
     setReviewData((state) => {
       // const { name, role, review, photoUrl } = state.list[state.active];
       const { name, role, review, photoUrl } = state.edit;
