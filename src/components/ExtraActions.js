@@ -1,4 +1,7 @@
 import Action from "./Action";
+// import { FaPen, FaPlus, FaTrash } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ExtraActions = ({
   edit,
@@ -13,32 +16,21 @@ const ExtraActions = ({
 }) => {
   return (
     <aside className="card__extraActions">
-      <div>
-        {isEditing ? (
-          <Action
-            isActing
-            finishedAction={finishedEditing}
-            cancelAction={cancelEditing}
-            icon="E"
-          />
-        ) : (
-          <Action mainAction={edit} icon="E" />
-        )}
-      </div>
-      <div>
-        {isAdding ? (
-          <Action
-            isActing
-            finishedAction={finishedAdding}
-            cancelAction={cancelAdding}
-            icon="+"
-          />
-        ) : (
-          <Action mainAction={add} icon="+" />
-        )}
-      </div>
-
-      <span onClick={del}>D</span>
+      <Action
+        isActing={isEditing}
+        mainAction={edit}
+        finishedAction={finishedEditing}
+        cancelAction={cancelEditing}
+        icon={<FontAwesomeIcon icon={faPen} />}
+      />
+      <Action
+        isActing={isAdding}
+        mainAction={add}
+        finishedAction={finishedAdding}
+        cancelAction={cancelAdding}
+        icon={<FontAwesomeIcon icon={faPlus} />}
+      />
+      <Action mainAction={del} icon={<FontAwesomeIcon icon={faTrash} />} />
     </aside>
   );
 };
