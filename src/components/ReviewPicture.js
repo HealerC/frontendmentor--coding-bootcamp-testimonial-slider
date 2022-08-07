@@ -23,7 +23,7 @@ const ReviewPicture = ({ name, url, prev, next, edit, uploadPhoto }) => {
             <div className="card__changePhoto" onClick={uploadPhoto}>
               <div className="changePhotoContainer">
                 <FaImage className="icon-changePhoto" />
-                <p>Change photo</p>
+                <p>Choose photo</p>
               </div>
             </div>
           )}
