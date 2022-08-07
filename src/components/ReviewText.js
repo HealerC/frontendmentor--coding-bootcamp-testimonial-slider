@@ -13,6 +13,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
             cols="30"
             rows="6"
             maxLength="210"
+            placeholder="How has this bootcamp benefited you?"
           />
         ) : (
           <h1
@@ -32,6 +33,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
                 onChange={handleChange}
                 className="card__name card__name--edit"
                 maxLength="30"
+                placeholder="Your full name"
               />
               <input
                 type="text"
@@ -40,6 +42,7 @@ const ReviewText = ({ name, role, review, edit, handleChange }) => {
                 onChange={handleChange}
                 className="card__role card__role--edit"
                 maxLength="30"
+                placeholder="Job role/position"
               />
             </div>
           ) : (
