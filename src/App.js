@@ -111,6 +111,7 @@ function App() {
     });
   };
   const addReview = () => {
+    if (reviewData.edit.isEditing) return;
     setReviewData((state) => ({
       ...state,
       edit: {
@@ -166,6 +167,7 @@ function App() {
     }));
   };
   const editReview = () => {
+    if (reviewData.edit.isAdding) return;
     setReviewData((state) => {
       const { name, role, review, photoUrl } = state.list[state.active];
       return {
