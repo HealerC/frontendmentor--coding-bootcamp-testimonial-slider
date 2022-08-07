@@ -251,8 +251,10 @@ function App() {
       {!activeReview && !reviewData.edit.isAdding ? (
         <section className="card__noTestimonials" onClick={addReview}>
           <div className="noTestimonialContainer">
-            <h1>No testimonials here yet.</h1>
-            <p>Click anywhere to add ...</p>
+            <div>
+              <h1>No testimonials here yet.</h1>
+              <p>Click anywhere to add ...</p>
+            </div>
           </div>
         </section>
       ) : (

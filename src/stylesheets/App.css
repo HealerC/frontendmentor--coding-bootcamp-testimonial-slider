@@ -208,10 +208,6 @@ body {
   cursor: pointer;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   background-image: url("../images/undraw_personal_opinions_re_qw29.svg");
   background-size: 70% auto;
   background-repeat: no-repeat;
@@ -224,6 +220,12 @@ body {
 .card__noTestimonials .noTestimonialContainer {
   background-color: hsla(0deg, 0%, 100%, 0.3);
   padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .card__extraActions {
