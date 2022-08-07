@@ -1,4 +1,4 @@
-import React from "react";
+import Action from "./Action";
 
 const ExtraActions = ({
   edit,
@@ -15,22 +15,26 @@ const ExtraActions = ({
     <aside className="card__extraActions">
       <div>
         {isEditing ? (
-          <div>
-            <span onClick={finishedEditing}>V</span>
-            <span onClick={cancelEditing}>X</span>
-          </div>
+          <Action
+            isActing
+            finishedAction={finishedEditing}
+            cancelAction={cancelEditing}
+            icon="E"
+          />
         ) : (
-          <span onClick={edit}>E</span>
+          <Action mainAction={edit} icon="E" />
         )}
       </div>
       <div>
         {isAdding ? (
-          <div>
-            <span onClick={finishedAdding}>V</span>
-            <span onClick={cancelAdding}>X</span>
-          </div>
+          <Action
+            isActing
+            finishedAction={finishedAdding}
+            cancelAction={cancelAdding}
+            icon="+"
+          />
         ) : (
-          <span onClick={add}>A</span>
+          <Action mainAction={add} icon="+" />
         )}
       </div>
 
