@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 // import { FaCheck } from "react-icons/fa";
 
 const Action = ({
@@ -8,20 +8,29 @@ const Action = ({
   finishedAction,
   isActing,
   icon,
+  description,
 }) => {
-  if (isActing) {
-    return (
-      <div>
-        <span onClick={finishedAction}>
-          <FontAwesomeIcon icon={faCheck} />
-        </span>
-        <span onClick={cancelAction}>
-          <FontAwesomeIcon icon={faXmark} />
-        </span>
-      </div>
-    );
+  let resolvedClassName = '';
+  if (isActing || description === 'delete') {
+    resolvedClassName += ` action-${description}`;
   }
-  return <span onClick={mainAction}>{icon}</span>;
+  return (
+    <div className={'action' + resolvedClassName}>
+      <span onClick={mainAction} className="mainAction">
+        {icon}
+      </span>
+      {isActing && (
+        <>
+          <span onClick={cancelAction} className="cancelAction">
+            <FontAwesomeIcon icon={faXmark} />
+          </span>
+          <span onClick={finishedAction} className="finishedAction">
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Action;

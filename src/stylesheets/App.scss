@@ -256,8 +256,87 @@ body {
 }
 .card__extraActions {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  .action {
+    color: hsl(240, 19%, 60%);
+    font-size: 1.3rem;
+    background-color: #F4F4FC;
+    width: max-content;
+    transition: width 1s;
+    // padding: 0.5rem 0.6rem;
+    padding: 0;
+   
+    
+    span {
+      display: inline-block;
+      padding: 0.5rem 0.4rem;
+    }
+    &-edit {
+      .mainAction {
+        background-color: hsl(206, 100%, 97%);
+        color: hsl(207, 64%, 39%);
+      }
+    }
+    &-add {
+      .mainAction {
+        background-color: hsl(142, 81%, 94%);
+        color: hsl(146, 62%, 38%);
+      }
+    }
+    
+    &-delete:active {
+      background-color: hsl(0, 71%, 95%);
+      color: hsl(0, 70%, 42%);
+    }
+    .cancelAction {
+      transition: color 0.5s;
+      &:hover {
+        color: hsl(0, 70%, 42%);
+      }
+      &:active {
+        background-color: hsl(0, 71%, 95%);
+      }
+    }
+    .finishedAction {
+      transition: color 0.5s;
+      &:hover {
+        color: hsl(146, 62%, 38%);;
+      }
+      &:active {
+        background-color: hsl(142, 81%, 94%);
+      }
+    }
+    .mainAction {
+        
+      &-edit {
+        background-color: hsl(206, 100%, 97%);
+        color: hsl(207, 64%, 39%);
+      }
+      &-add {
+        background-color: hsl(142, 81%, 94%);
+        color: hsl(146, 62%, 38%);
+      }
+      &-delete:active  {
+        background-color: hsl(0, 71%, 95%);
+        color: hsl(0, 70%, 42%);
+      }
+    }
+    &:nth-child(2), &:nth-child(3) {
+      span {
+        padding-right: 9px;
+      }
+    }
+    &:first-child {
+      border-top-right-radius: 1rem;
+    }
+    &:last-child {
+      border-bottom-right-radius: 1rem;
+    }
+    
+  }
 }
 
 @media (min-width: 600px) {

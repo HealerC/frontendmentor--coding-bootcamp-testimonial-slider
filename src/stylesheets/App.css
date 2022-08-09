@@ -230,8 +230,72 @@ body {
 
 .card__extraActions {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.card__extraActions .action {
+  color: hsl(240deg, 19%, 60%);
+  font-size: 1.3rem;
+  background-color: #F4F4FC;
+  width: max-content;
+  transition: width 1s;
+  padding: 0;
+}
+.card__extraActions .action span {
+  display: inline-block;
+  padding: 0.5rem 0.4rem;
+}
+.card__extraActions .action-edit .mainAction {
+  background-color: hsl(206deg, 100%, 97%);
+  color: hsl(207deg, 64%, 39%);
+}
+.card__extraActions .action-add .mainAction {
+  background-color: hsl(142deg, 81%, 94%);
+  color: hsl(146deg, 62%, 38%);
+}
+.card__extraActions .action-delete:active {
+  background-color: hsl(0deg, 71%, 95%);
+  color: hsl(0deg, 70%, 42%);
+}
+.card__extraActions .action .cancelAction {
+  transition: color 0.5s;
+}
+.card__extraActions .action .cancelAction:hover {
+  color: hsl(0deg, 70%, 42%);
+}
+.card__extraActions .action .cancelAction:active {
+  background-color: hsl(0deg, 71%, 95%);
+}
+.card__extraActions .action .finishedAction {
+  transition: color 0.5s;
+}
+.card__extraActions .action .finishedAction:hover {
+  color: hsl(146deg, 62%, 38%);
+}
+.card__extraActions .action .finishedAction:active {
+  background-color: hsl(142deg, 81%, 94%);
+}
+.card__extraActions .action .mainAction-edit {
+  background-color: hsl(206deg, 100%, 97%);
+  color: hsl(207deg, 64%, 39%);
+}
+.card__extraActions .action .mainAction-add {
+  background-color: hsl(142deg, 81%, 94%);
+  color: hsl(146deg, 62%, 38%);
+}
+.card__extraActions .action .mainAction-delete:active {
+  background-color: hsl(0deg, 71%, 95%);
+  color: hsl(0deg, 70%, 42%);
+}
+.card__extraActions .action:nth-child(2) span, .card__extraActions .action:nth-child(3) span {
+  padding-right: 9px;
+}
+.card__extraActions .action:first-child {
+  border-top-right-radius: 1rem;
+}
+.card__extraActions .action:last-child {
+  border-bottom-right-radius: 1rem;
 }
 
 @media (min-width: 600px) {

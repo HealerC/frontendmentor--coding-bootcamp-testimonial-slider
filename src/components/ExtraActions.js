@@ -21,6 +21,7 @@ const ExtraActions = ({
         mainAction={edit}
         finishedAction={finishedEditing}
         cancelAction={cancelEditing}
+        description="edit"
         icon={<FontAwesomeIcon icon={faPen} />}
       />
       <Action
@@ -28,9 +29,14 @@ const ExtraActions = ({
         mainAction={add}
         finishedAction={finishedAdding}
         cancelAction={cancelAdding}
+        description="add"
         icon={<FontAwesomeIcon icon={faPlus} />}
       />
-      <Action mainAction={del} icon={<FontAwesomeIcon icon={faTrash} />} />
+      <Action
+        mainAction={del}
+        description="delete"
+        icon={<FontAwesomeIcon icon={faTrash} />}
+      />
     </aside>
   );
 };
