@@ -1,9 +1,17 @@
 import Action from './Action';
-// import { FaPen, FaPlus, FaTrash } from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPen,
+  faPlus,
+  faTrash,
+  faXmark,
+  faCheck,
+} from '@fortawesome/free-solid-svg-icons';
 
+/* All the extra actions that could be done by the app (edit, add, delete)
+It uses the <Action /> component and gives them the functions to call on click
+If the user `isAdding` or `isEditing` it renders two additional Action components to 
+cancel or finish else it renders all the components for (edit, add, delete) */
 const ExtraActions = ({
   edit,
   add,
@@ -17,6 +25,8 @@ const ExtraActions = ({
 }) => {
   return (
     <aside className="card__extraActions">
+      {/* If we are in isAdding/isEditing state, `isActing` is set to
+      true to provide for styling */}
       {isAdding || isEditing ? (
         <>
           <Action

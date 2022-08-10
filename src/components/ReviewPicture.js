@@ -1,11 +1,14 @@
-import prevIcon from "../images/icon-prev.svg";
-import nextIcon from "../images/icon-next.svg";
-import { FaImage } from "react-icons/fa";
+import prevIcon from '../images/icon-prev.svg';
+import nextIcon from '../images/icon-next.svg';
+import { FaImage } from 'react-icons/fa';
 
+/* The picture of the person that wrote the testimonial set as background
+image of a div (card__photoDiv). If the person is Editing/Adding a testimonial though, 
+a click event on the div of the picture triggers cloudinary upload api widget to 
+upload a picture */
 const ReviewPicture = ({ name, url, prev, next, edit, uploadPhoto }) => {
   return (
     <section className="card__picture">
-      {/* <img src={patternBackground} alt="" className="card__backgroundImage" /> */}
       <div className="card__photoContainer">
         <div
           className="card__photoDiv"
@@ -19,6 +22,7 @@ const ReviewPicture = ({ name, url, prev, next, edit, uploadPhoto }) => {
                 }
           }
         >
+          {/* Hide the change photo overlay if user is editing/adding a review */}
           {(edit.isEditing || edit.isAdding) && (
             <div className="card__changePhoto" onClick={uploadPhoto}>
               <div className="changePhotoContainer">
@@ -27,6 +31,9 @@ const ReviewPicture = ({ name, url, prev, next, edit, uploadPhoto }) => {
               </div>
             </div>
           )}
+          {/* Hide the sr-only text (name of person who has the photo) as
+          well as buttons to go to prev/next review if the user is editing/adding
+          a review */}
           {!edit.isEditing && !edit.isAdding && (
             <>
               <span className="sr-only">Picture of {name}</span>
