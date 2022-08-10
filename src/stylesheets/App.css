@@ -1,3 +1,9 @@
+#root, .card__picture, .card__photoContainer, .card__photoContainer .card__photoDiv .card__changePhoto, .card__noTestimonials .noTestimonialContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -32,19 +38,16 @@ body {
 
 #root {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .card {
-  background-color: white;
-  box-shadow: 0 4px 6px hsla(0deg, 0%, 0%, 0.5);
-  position: relative;
-  display: flex;
   width: 100%;
   height: 100vh;
+  position: relative;
+  display: flex;
   flex-direction: column;
+  background-color: white;
+  box-shadow: 0 4px 6px hsla(0deg, 0%, 0%, 0.5);
 }
 .card__text {
   order: 2;
@@ -89,10 +92,10 @@ body {
   border: 1px solid #9a94eb;
 }
 .card__text .card__bio {
-  font-weight: 500;
-  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
+  font-weight: 500;
+  font-size: 0.8rem;
 }
 .card__text .card__bio .card__name {
   margin-bottom: 0.2em;
@@ -122,24 +125,18 @@ body {
   background-origin: content-box;
   padding: 1rem;
   height: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .card__photoContainer {
   width: 90%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .card__photoContainer .card__photoDiv {
   width: 80%;
   height: 80%;
   background-size: cover;
+  background-color: hsl(248deg, 67%, 94%);
   border-radius: 0.2rem;
   position: relative;
-  background-color: hsl(248deg, 67%, 94%);
   box-shadow: 3px 10px 10px hsla(0deg, 0%, 0%, 0.2);
   text-align: center;
   font-family: Roboto, sans-serif;
@@ -149,9 +146,6 @@ body {
 .card__photoContainer .card__photoDiv .card__changePhoto {
   width: 100%;
   height: 100%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
   cursor: pointer;
   user-select: none;
   background-color: hsla(248deg, 67%, 94%, 0.5);
@@ -204,6 +198,7 @@ body {
 .card__changeReviews button:active {
   background-color: lightgray;
 }
+
 .card__noTestimonials {
   cursor: pointer;
   width: 100%;
@@ -222,9 +217,6 @@ body {
   padding: 1rem;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
@@ -235,64 +227,65 @@ body {
   transform: translateY(-50%);
 }
 .card__extraActions .action {
-  color: hsl(240deg, 19%, 60%);
   font-size: 1.3rem;
+  color: hsl(240deg, 19%, 60%);
   background-color: #F4F4FC;
-  width: max-content;
-  transition: width 1s;
+  width: 100%;
   padding: 0;
 }
 .card__extraActions .action span {
   display: inline-block;
   padding: 0.5rem 0.4rem;
 }
-.card__extraActions .action-edit .mainAction {
-  background-color: hsl(206deg, 100%, 97%);
-  color: hsl(207deg, 64%, 39%);
-}
-.card__extraActions .action-add .mainAction {
-  background-color: hsl(142deg, 81%, 94%);
-  color: hsl(146deg, 62%, 38%);
-}
-.card__extraActions .action-delete:active {
-  background-color: hsl(0deg, 71%, 95%);
-  color: hsl(0deg, 70%, 42%);
-}
-.card__extraActions .action .cancelAction {
-  transition: color 0.5s;
-}
-.card__extraActions .action .cancelAction:hover {
-  color: hsl(0deg, 70%, 42%);
-}
-.card__extraActions .action .cancelAction:active {
-  background-color: hsl(0deg, 71%, 95%);
-}
-.card__extraActions .action .finishedAction {
-  transition: color 0.5s;
-}
-.card__extraActions .action .finishedAction:hover {
-  color: hsl(146deg, 62%, 38%);
-}
-.card__extraActions .action .finishedAction:active {
-  background-color: hsl(142deg, 81%, 94%);
-}
-.card__extraActions .action .mainAction-edit {
-  background-color: hsl(206deg, 100%, 97%);
-  color: hsl(207deg, 64%, 39%);
-}
-.card__extraActions .action .mainAction-add {
-  background-color: hsl(142deg, 81%, 94%);
-  color: hsl(146deg, 62%, 38%);
-}
-.card__extraActions .action .mainAction-delete:active {
-  background-color: hsl(0deg, 71%, 95%);
-  color: hsl(0deg, 70%, 42%);
-}
-.card__extraActions .action:nth-child(2) span, .card__extraActions .action:nth-child(3) span {
-  padding-right: 9px;
-}
-.card__extraActions .action:first-child {
+.card__extraActions .action.edit {
   border-top-right-radius: 1rem;
+}
+.card__extraActions .action.edit :hover, .card__extraActions .action.edit:focus {
+  border-top-right-radius: 1rem;
+  background-color: hsl(206deg, 100%, 97%);
+  color: hsl(207deg, 64%, 39%);
+}
+.card__extraActions .action.edit.edit-active {
+  background-color: hsl(207deg, 64%, 39%);
+  color: white;
+}
+.card__extraActions .action.edit.edit-active :hover, .card__extraActions .action.edit.edit-active:focus {
+  background-color: unset;
+  color: unset;
+}
+.card__extraActions .action.add :hover, .card__extraActions .action.add:focus {
+  background-color: hsl(142deg, 81%, 94%);
+  color: hsl(146deg, 62%, 38%);
+}
+.card__extraActions .action.add.add-active {
+  border-top-right-radius: 1rem;
+  background-color: hsl(146deg, 62%, 38%);
+  color: white;
+}
+.card__extraActions .action.add.add-active :hover, .card__extraActions .action.add.add-active:focus {
+  background-color: unset;
+  color: unset;
+}
+.card__extraActions .action.delete:hover, .card__extraActions .action.delete:focus {
+  background-color: hsl(0deg, 71%, 95%);
+  color: hsl(0deg, 70%, 42%);
+}
+.card__extraActions .action.delete:active {
+  background-color: hsl(0deg, 70%, 42%);
+  color: white;
+}
+.card__extraActions .action.cancel, .card__extraActions .action.finish {
+  transition: all 0.3s;
+}
+.card__extraActions .action.cancel:hover, .card__extraActions .action.cancel:focus, .card__extraActions .action.finish:hover, .card__extraActions .action.finish:focus {
+  width: calc(100% + 10px);
+  color: white;
+}
+.card__extraActions .action.cancel:hover, .card__extraActions .action.cancel:focus {
+  background-color: hsl(0deg, 70%, 42%);
+}
+.card__extraActions .action.finish:hover, .card__extraActions .action.finish:focus {
+  background-color: hsl(146deg, 62%, 38%);
 }
 .card__extraActions .action:last-child {
   border-bottom-right-radius: 1rem;

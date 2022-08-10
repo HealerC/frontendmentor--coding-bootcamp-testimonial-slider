@@ -1,47 +1,30 @@
 @use 'variables';
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
-
 html {
   height: 100%;   // The html height initially expands with the content
 }
 body {
   height: 100%;   // So we can center the page
   display: flex;
+  // Grey background with "glamorous" diamonds svg repeated all over the page
   background-image: url("../images/glamorous.svg");
   background-color: #f3f1f1;
 }
 #root {
   width: 100%;
-  display: flex;  // Turns out we have to tinker with root to center the page
-  justify-content: center;
-  align-items: center;
+  // Turns out we have to tinker with root to center the page
+  @extend %flex-center;
 }
+
+// Card styles
 .card {
-  background-color: white;
-  box-shadow: 0 4px 6px hsla(0, 0%, 0%, .5);
-  position: relative;    // The special actions will be positioned absolutely
-  display: flex;
   width: 100%;
   height: 100vh;    // Fill the entire length of screen in smaller devices
+  position: relative;    // The special actions will be positioned absolutely
+  display: flex;
   flex-direction: column;
+  background-color: white;
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, .5);
 
   &__text {
     order: 2;     /// The text comes under the picture in small devices
@@ -59,7 +42,7 @@ body {
     
     .text-container {
       padding-top: 1rem;
-      text-align: center;
+      text-align: center;   // Only on smaller devices
       // Big quote icon
       background-image: url(../images/pattern-quotes.svg);
       background-size: 4rem;
@@ -77,7 +60,7 @@ body {
       &::after {
         content: ' ' close-quote;
       }
-      &--edit {
+      &--edit {       // Style applied when user is editing text
         background-color: transparent;
         border: 1px solid #c2bff3;;
         margin-bottom: 1rem;
@@ -85,16 +68,16 @@ body {
         max-width: 100%;
         &:focus {
           outline: none;
-          border: 1px solid #9a94eb;
+          border: 1px solid #9a94eb;  // Just darken the border on focus
         }
       }
     }
     // Bio information
     .card__bio {
-      font-weight: 500;
-      font-size: 0.8rem;
       display: flex;
       flex-direction: column;   // Stack vertically on smaller devices
+      font-weight: 500;
+      font-size: 0.8rem;
       .card__name {
         margin-bottom: 0.2em;
       }
@@ -130,45 +113,39 @@ body {
     padding: 1rem;
     height: 60%;
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-center;
   }
 
   &__photoContainer {
     width: 90%;
     height: 100%;
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-center;
     
     // The photo of the person covers up the div container
     .card__photoDiv {
       width: 80%;
       height: 80%;
       background-size: cover;
+      background-color: hsl(248, 67%, 94%); // Shows on photo unavailable
       border-radius: 0.2rem;
-      position: relative;
-      background-color: hsl(248, 67%, 94%);
+      position: relative;   // So the next/prev buttons can position absolutely
       box-shadow: variables.$shadow-100;
-      text-align: center;
+      
+      text-align: center;   // The text only shows on editing
       font-family: Roboto, sans-serif;
       font-weight: 300;
       color: variables.$text-primary;
       
+      // Text and icon that shows on editing to change the photo
       .card__changePhoto {
         width: 100%;
         height: 100%;
-        justify-content: center;
-        display: flex;
-        align-items: center;
+        @extend %flex-center;
         cursor: pointer;
         user-select: none;
         background-color: hsla(248, 67%, 94%, 0.5);
         box-shadow: variables.$shadow-inset;
-        .changePhotoContainer {
-        }
       }
       &:hover .card__changePhoto {
         color: #4A3FDB;
@@ -184,6 +161,7 @@ body {
         font-size: smaller;
       }
     }
+    // Prev/next buttons - basic positioning styling position
     .card__changeReviews {
       position: absolute;
       bottom: -10px;
@@ -193,9 +171,9 @@ body {
     }
   }
 
+  // Prev/next buttons - main styling
   &__changeReviews {
     display: flex;
-    // box-shadow: variables.$shadow-300;
     border-radius: 1rem;
 
     button {
@@ -224,12 +202,9 @@ body {
       }
     }
   }
-
-  &__changePhoto {
-
-  }
 }
 .card {
+  // Styling when there's no testimonials yet
   &__noTestimonials {
     cursor: pointer;
     width: 100%;
@@ -247,91 +222,100 @@ body {
       padding: 1rem;
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @extend %flex-center;
       text-align: center;
     }
   }
 }
 .card__extraActions {
+  // The extra actions - edit, add and delete review should show
+  // at the left center edge of the card/screen
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 
   .action {
-    color: hsl(240, 19%, 60%);
     font-size: 1.3rem;
+    color: hsl(240, 19%, 60%);
     background-color: #F4F4FC;
-    width: max-content;
-    transition: width 1s;
-    // padding: 0.5rem 0.6rem;
-    padding: 0;
-   
-    
+    width: 100%;
+    padding: 0;   // The span containing the icon takes care of the spacing
+
+    // The span contains the icon
     span {
       display: inline-block;
       padding: 0.5rem 0.4rem;
     }
-    &-edit {
-      .mainAction {
-        background-color: hsl(206, 100%, 97%);
-        color: hsl(207, 64%, 39%);
-      }
-    }
-    &-add {
-      .mainAction {
-        background-color: hsl(142, 81%, 94%);
-        color: hsl(146, 62%, 38%);
-      }
-    }
-    
-    &-delete:active {
-      background-color: hsl(0, 71%, 95%);
-      color: hsl(0, 70%, 42%);
-    }
-    .cancelAction {
-      transition: color 0.5s;
-      &:hover {
-        color: hsl(0, 70%, 42%);
-      }
-      &:active {
-        background-color: hsl(0, 71%, 95%);
-      }
-    }
-    .finishedAction {
-      transition: color 0.5s;
-      &:hover {
-        color: hsl(146, 62%, 38%);;
-      }
-      &:active {
-        background-color: hsl(142, 81%, 94%);
-      }
-    }
-    .mainAction {
-        
-      &-edit {
-        background-color: hsl(206, 100%, 97%);
-        color: hsl(207, 64%, 39%);
-      }
-      &-add {
-        background-color: hsl(142, 81%, 94%);
-        color: hsl(146, 62%, 38%);
-      }
-      &-delete:active  {
-        background-color: hsl(0, 71%, 95%);
-        color: hsl(0, 70%, 42%);
-      }
-    }
-    &:nth-child(2), &:nth-child(3) {
-      span {
-        padding-right: 9px;
-      }
-    }
-    &:first-child {
+
+    // .action.edit|.add|.delete are basically used to target the particular
+    // extra actions icons respectively as well as their state when the icon
+    // becomes active (during editing and adding)
+    &.edit {
+      // The .edit is at the top so it is given a rounded border radius
       border-top-right-radius: 1rem;
+      :hover, &:focus {
+        border-top-right-radius: 1rem;
+        background-color: variables.$lightBlue;
+        color: variables.$blue;
+      }
+      // When `isEditing` action is on
+      &.edit-active {
+        background-color: variables.$blue;
+        color: white;
+        :hover, &:focus {
+          background-color: unset;    // So the colors don't change
+          color: unset;
+        }
+      }
     }
+    &.add {
+      :hover, &:focus {
+        background-color: variables.$lightGreen;
+        color: variables.$green;
+      }
+      &.add-active {
+        // Any active action icon is rearranged to the top of the icon list
+        // So it takes a rounded border radius as though it is the first icon
+        border-top-right-radius: 1rem;
+        background-color: variables.$green;
+        color: white;
+        :hover, &:focus {
+          background-color: unset;
+          color: unset;
+        }
+      }
+    }
+    &.delete {
+      &:hover, &:focus {
+        background-color: variables.$lightRed;
+        color: variables.$red;
+      }
+      &:active {
+        background-color: variables.$red;
+        color: white;
+      }
+    }
+    &.cancel, &.finish {
+      transition: all 0.3s;
+      // Smooth transitive increase in width and change color on hover
+      &:hover, &:focus {
+        width: calc(100% + 10px);
+        color: white;
+      }
+    }
+    &.cancel {
+      &:hover, &:focus {
+        background-color: variables.$red;
+      }
+    }
+    &.finish {
+      &:hover, &:focus {
+        background-color: variables.$green;
+      }
+    }
+    // Bottom right round corner on the last extra acton
+    // The one for the top right was handled above
     &:last-child {
       border-bottom-right-radius: 1rem;
     }
@@ -339,6 +323,12 @@ body {
   }
 }
 
+// Media queries
+
+// Basically all the styles the document would have for bigger screen
+// displays - large tablets desktops etc. are contained in the first media
+// query here while other queries majorly set the card width based on the 
+// size of the display
 @media (min-width: 600px) {
   .card {
     width: 85%;
@@ -357,11 +347,11 @@ body {
         position: relative;
         left: 4rem;   // So the testimonial text overlaps the image
         z-index: 1;
-        background-position: 20% 0;
-        text-align: initial;
+        background-position: 20% 0;   // Big quote svg image on the text
+        text-align: initial;    // Left alignment
       }
       .card__bio {
-        flex-direction: row;  // The card bio should stack horizontally
+        flex-direction: row;  // The card bio should arrange horizontally
         .card__name {
           margin-bottom: initial;
         }
@@ -378,9 +368,6 @@ body {
           }
         }
       }
-      // .card__testimonial {
-
-      // }
     }
 
     &__picture {
@@ -390,16 +377,16 @@ body {
       height: initial;
     }
     &__photoContainer {
-      width: 100%;    //
+      width: 100%;
       
       .card__changeReviews {
-        left: 70px;
+        left: 70px; // Prev-Next button, Arranged centrally on smaller screens
       }
     }
   }
   .card {
     &__noTestimonials {
-      height: 55vh;
+      height: 55vh;   // So it has a defined height even when it has no content
     }
   }
 }
@@ -407,18 +394,15 @@ body {
 @media (min-width: 800px) {
   .card {
     width: 75%;
-    // height: 50%; 
   }
 }
 @media (min-width: 1000px) {
   .card {
-    width: 70%;
-    // height: 50%; 
+    width: 70%; 
   }
 }
 @media (min-width: 1050px) {
   .card {
-    width: 60%;
-    // height: 50%; 
+    width: 60%; 
   }
 }

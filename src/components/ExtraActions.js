@@ -1,7 +1,8 @@
-import Action from "./Action";
+import Action from './Action';
 // import { FaPen, FaPlus, FaTrash } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const ExtraActions = ({
   edit,
@@ -16,27 +17,49 @@ const ExtraActions = ({
 }) => {
   return (
     <aside className="card__extraActions">
-      <Action
-        isActing={isEditing}
-        mainAction={edit}
-        finishedAction={finishedEditing}
-        cancelAction={cancelEditing}
-        description="edit"
-        icon={<FontAwesomeIcon icon={faPen} />}
-      />
-      <Action
-        isActing={isAdding}
-        mainAction={add}
-        finishedAction={finishedAdding}
-        cancelAction={cancelAdding}
-        description="add"
-        icon={<FontAwesomeIcon icon={faPlus} />}
-      />
-      <Action
-        mainAction={del}
-        description="delete"
-        icon={<FontAwesomeIcon icon={faTrash} />}
-      />
+      {isAdding || isEditing ? (
+        <>
+          <Action
+            isActing
+            description={isAdding ? 'add' : 'edit'}
+            icon={
+              isAdding ? (
+                <FontAwesomeIcon icon={faPlus} />
+              ) : (
+                <FontAwesomeIcon icon={faPen} />
+              )
+            }
+          />
+          <Action
+            description="cancel"
+            icon={<FontAwesomeIcon icon={faXmark} />}
+            mainAction={isAdding ? cancelAdding : cancelEditing}
+          />
+          <Action
+            description="finish"
+            icon={<FontAwesomeIcon icon={faCheck} />}
+            mainAction={isAdding ? finishedAdding : finishedEditing}
+          />
+        </>
+      ) : (
+        <>
+          <Action
+            description="edit"
+            mainAction={edit}
+            icon={<FontAwesomeIcon icon={faPen} />}
+          />
+          <Action
+            description="add"
+            mainAction={add}
+            icon={<FontAwesomeIcon icon={faPlus} />}
+          />
+          <Action
+            description="delete"
+            mainAction={del}
+            icon={<FontAwesomeIcon icon={faTrash} />}
+          />
+        </>
+      )}
     </aside>
   );
 };

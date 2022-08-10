@@ -1,7 +1,42 @@
 $text-primary: hsl(245, 25%, 18%);
 $text-secondary: hsl(245, 20%, 76%);
+$lightBlue: hsl(206, 100%, 97%);
+$blue: hsl(207, 64%, 39%);
+$lightGreen: hsl(142, 81%, 94%);
+$green: hsl(146, 62%, 38%);
+$lightRed: hsl(0, 71%, 95%);
+$red: hsl(0, 70%, 42%);
 
 // $shadow-100: 0 3px 6px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12);
 $shadow-100: 3px 10px 10px hsla(0, 0%, 0%, .2);
 $shadow-300: 0 15px 25px hsla(0, 0%, 0%, .15), 0 5px 10px hsla(0, 0%, 0%, .5);
-$shadow-inset: 0 -4px 0 hsla(0, 0%, 100%, .15), inset 0 4px 4px hsla(0, 0%, 0%, 0.1)
+$shadow-inset: 0 -4px 0 hsla(0, 0%, 100%, .15), inset 0 4px 4px hsla(0, 0%, 0%, 0.1);
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// The photo of the user is given as a background photo, a text is placed
+// to identify the person but it doesn't show on the page
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
